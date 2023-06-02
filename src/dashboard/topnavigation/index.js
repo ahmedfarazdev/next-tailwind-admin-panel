@@ -1,7 +1,18 @@
 import { useToggle } from '../provider/context';
 
 export default function TopNavigation() {
-  const { toggle } = useToggle();
+  const { toggle, setIsLogin } = useToggle();
+
+
+  const handleLogOut = () => {
+    sessionStorage.setItem('email', '');
+    sessionStorage.setItem('pasword', '');
+    setIsLogin(false);
+
+  }
+
+
+
   return (
     <header className="bg-white h-16 items-center relative shadow w-full z-10 md:h-20 lg:rounded-2xl">
       <div className="flex flex-center flex-col h-full justify-center mx-auto px-3 relative">
@@ -20,6 +31,7 @@ export default function TopNavigation() {
             </div>
             <div className="flex group h-full items-center relative w-36 lg:w-64">
               <div className="absolute block cursor-pointer flex h-10 items-center justify-center p-3 pr-2 text-gray-500 text-sm uppercase w-auto sm:hidden">
+
                 <svg
                   fill="none"
                   className="h-5 relative w-5"
@@ -57,6 +69,9 @@ export default function TopNavigation() {
                 className="h-10 mx-auto object-cover rounded-full w-10"
               />
             </a>
+            <button className='btn' onClick={handleLogOut}>
+              Sign Out
+            </button>
           </div>
         </div>
       </div>

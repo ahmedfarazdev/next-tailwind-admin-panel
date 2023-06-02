@@ -9,9 +9,9 @@ import DocumentationIcon from './icons/documentation';
 
 const data = [
   {
-    title: 'Dashboard',
+    title: 'Banners',
     icon: <HomeIcon />,
-    link: '/',
+    link: '/admin/banners',
   },
   {
     title: 'Projects',

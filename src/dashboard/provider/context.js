@@ -6,6 +6,7 @@ const Context = React.createContext({});
 
 export default function DashboardProvider({ children }) {
   const [open, setOpen] = React.useState(false);
+  const [isLogin, setIsLogin] = React.useState(false);
   const ref = React.useRef(null);
   const router = useRouter();
 
@@ -46,7 +47,7 @@ export default function DashboardProvider({ children }) {
   }, [open, ref]);
 
   return (
-    <Context.Provider value={{ open, ref, toggle }}>
+    <Context.Provider value={{ open, ref, toggle , setIsLogin , isLogin }}>
       {children}
     </Context.Provider>
   );

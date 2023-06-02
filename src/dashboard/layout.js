@@ -3,7 +3,8 @@ import Overlay from './provider/overlay';
 import TopNavigation from './topnavigation';
 import SideNavigation from './sidenavigation';
 import { useToggle } from './provider/context';
-
+import { useRouter } from 'next/router';
+import LoginForm from '../components/login';
 /*	w-[calc(100%-16rem)] class get the remain width of the main component from lg:viewport by subtracting
 (the total width by the width of the side navigation component which is w-64 = 16rem)*/
 
@@ -16,9 +17,15 @@ const style = {
 };
 
 export default function DashboardLayout({ children }) {
-  const { open } = useToggle();
+  const { open, isLogin  } = useToggle();
+
+
+
   return (
+   
     <div className={style.container}>
+
+      { isLogin ? (
       <div className="flex items-start">
         <Overlay />
         <SideNavigation mobilePosition="right" />
@@ -30,6 +37,13 @@ export default function DashboardLayout({ children }) {
           <Main className={style.main}>{children}</Main>
         </div>
       </div>
+      ) : (
+        <LoginForm />
+      )
+
+    }     
     </div>
-  );
+  )
+   
+  
 }
